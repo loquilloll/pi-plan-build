@@ -310,6 +310,10 @@ test("plan guidance supports conversation before persisted finalization", () => 
 	assert.doesNotMatch(reminder, /`### (?:Agent|User)`|\*\*(?:Agent|User):\*\*/);
 	assert.match(PLAN_EXIT_DESCRIPTION, /After you have written a complete plan to the plan file/);
 	assert.match(reminder, /## Implementation Steps/);
+	assert.match(
+		PLAN_TO_BUILD_REMINDER,
+		/create a goal whose objective is the plan's `## Goal` statement/,
+	);
 });
 
 test("verification policy reaches planning and every implementation handoff", () => {
