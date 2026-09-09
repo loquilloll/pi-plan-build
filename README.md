@@ -215,6 +215,15 @@ Pi Plan & Build is an independent extension with its own workflow and UI behavio
 
 The Plan workflow uses Pi's native exploration tools directly and does not bundle or require subagents.
 
+## Fork notes (loquilloll)
+
+This fork (`loquilloll/pi-plan-build`) diverges from `janvitos/pi-plan-build` in two prompt-only ways; no runtime behavior changes.
+
+1. **Plan section structure** — the finalization reminder now mandates the OpenCode plan-template section order: `## Goal` (one or two sentences), `## Design` (recommended approach only), `## Files` (critical files), `## Verification` (existing `**Agent**`/`**User**` label rules unchanged), and `## Implementation Steps` (checklist, unchanged). Implemented in `prompts.ts` (`buildPlanReminder`); asserted in `utils.test.ts`.
+2. **Goal handoff (pi-goal)** — the plan-to-build reminder (`PLAN_TO_BUILD_REMINDER`) adds an imperative Step 0: before the first file change, call `create_goal` with the plan's `## Goal` statement as the objective. The step is skipped only when the `create_goal` tool is absent (pi-goal not installed) or a goal is already active. The imperative phrasing with an explicit anti-skip clause matters: local models skipped the earlier conditional wording on small changes. The goal is then completed by pi-goal's normal `update_goal` flow when the build verifies. Works with or without the `pi-goal` package.
+
+Both changes are prompt text only, covered by `utils.test.ts` fixture assertions; the rest of the suite is upstream's.
+
 ## Development
 
 ```bash
