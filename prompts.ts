@@ -15,7 +15,7 @@ Your operational mode has changed from plan to build.
 You are no longer in read-only mode.
 You are permitted to make file changes, run shell commands, and utilize your arsenal of tools as needed.
 
-If a \`create_goal\` tool is available and no unfinished goal already exists, create a goal whose objective is the plan's \`## Goal\` statement before starting implementation; otherwise proceed without a goal.
+Step 0, before your first file change: call the \`create_goal\` tool with the plan's \`## Goal\` statement as the objective. Skip this step only if \`create_goal\` is not in your tool list or a goal is already active. Do not skip it because the change looks small.
 
 ${VERIFICATION_GUIDANCE}
 </system-reminder>`;

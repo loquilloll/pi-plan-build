@@ -312,8 +312,9 @@ test("plan guidance supports conversation before persisted finalization", () => 
 	assert.match(reminder, /## Implementation Steps/);
 	assert.match(
 		PLAN_TO_BUILD_REMINDER,
-		/create a goal whose objective is the plan's `## Goal` statement/,
+		/Step 0, before your first file change: call the `create_goal` tool/,
 	);
+	assert.match(PLAN_TO_BUILD_REMINDER, /Do not skip it because the change looks small/);
 });
 
 test("verification policy reaches planning and every implementation handoff", () => {
