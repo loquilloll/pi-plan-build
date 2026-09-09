@@ -289,7 +289,10 @@ test("plan guidance supports conversation before persisted finalization", () => 
 	assert.match(reminder, /when the user explicitly asks you to finalize it/);
 	assert.match(reminder, /write the complete plan to the plan file and call plan_exit/);
 	assert.match(reminder, /only while finalizing the plan or explicitly revising an existing plan/);
-	assert.match(reminder, /brief `## Verification` section/);
+	assert.match(reminder, /Structure the plan with these sections, in this order/);
+	assert.match(reminder, /`## Goal` — one or two sentences stating the outcome/);
+	assert.match(reminder, /`## Design` — the recommended approach only/);
+	assert.match(reminder, /`## Files` — the critical files that need modification/);
 	assert.match(reminder, /smallest credible proof that the changed basic functionality works/);
 	assert.match(reminder, /avoid exhaustive regression, edge-case, performance, or compatibility testing/);
 	assert.match(reminder, /standalone bold labels without colons/);

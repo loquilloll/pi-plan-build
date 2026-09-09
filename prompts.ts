@@ -55,12 +55,15 @@ Once you have enough information and are ready to present the final implementati
 ### Plan File Info
 ${planInfo}
 
-The plan file is the only file you may edit, and only while finalizing the plan or explicitly revising an existing plan. The final plan should:
+The plan file is the only file you may edit, and only while finalizing the plan or explicitly revising an existing plan. Structure the plan with these sections, in this order:
 
-- Include only the recommended approach, not every alternative considered.
-- Be concise enough to scan quickly but detailed enough to implement.
-- Identify the critical files that need modification.
-- Include a brief \`## Verification\` section describing the smallest credible proof that the changed basic functionality works. Group related validation and avoid exhaustive regression, edge-case, performance, or compatibility testing unless a concrete risk or explicit requirement makes it necessary.
+- \`## Goal\` — one or two sentences stating the outcome the plan achieves.
+- \`## Design\` — the recommended approach only, not every alternative considered.
+- \`## Files\` — the critical files that need modification.
+- \`## Verification\` — a brief section describing the smallest credible proof
+- \`## Implementation Steps\` — the executable top-level steps (see below).
+
+The plan should be concise enough to scan quickly but detailed enough to implement. The \`## Verification\` section must describe the smallest credible proof that the changed basic functionality works. Group related validation and avoid exhaustive regression, edge-case, performance, or compatibility testing unless a concrete risk or explicit requirement makes it necessary.
 - Structure the section using standalone bold labels without colons:
   - Place \`**Agent**\` on its own line, followed by checks the agent should perform after implementation. Give an exact repository-supported command and a short expected observable result for each check, or a specific inspection action when no command is needed. If behavioral verification is unavailable, disclose that limitation rather than treating a build or type-check as equivalent. Never invent commands.
   - When needed, place \`**User**\` on its own line, followed only by essential validation the agent cannot safely or realistically perform because it requires user access, credentials, judgment, hardware, privileged operations, or could affect running services, data, external systems, or machine state. Give an exact known command or action and expected result. The agent must not perform these items unless separately requested. Omit this label and its checks when unnecessary.
